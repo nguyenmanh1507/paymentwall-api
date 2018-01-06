@@ -1,0 +1,40 @@
+.nav {
+  &__title {
+    margin-bottom: $space-sm;
+
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    color: $color-6;
+    text-transform: uppercase;
+  }
+
+  &__list,
+  &__sub-list {
+    padding: 0;
+    margin: 0;
+
+    // font-size: $font-size-small;
+  }
+
+  &__item,
+  &__sub-item {
+    list-style-type: none;
+
+    &:not(:last-child) {
+      margin-bottom: $space-sm;
+    }
+  }
+
+  &__sub-item {
+    padding-left: $space-lg;
+
+    &:first-child {
+      margin-top: $space-sm;
+    }
+  }
+
+  &__link,
+  &__sub-link {
+    color: $color-8;
+  }
+}

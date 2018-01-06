@@ -1,0 +1,109 @@
+// stylelint-disable comment-whitespace-inside, comment-empty-line-before
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+/** CSS Transition
+ *	Usage: @include transition(width,0.3s,ease-out);
+ */
+@mixin transition($transition-property, $transition-time, $method) {
+  transition: $transition-property $transition-time $method;
+}
+
+// stylelint-disable indentation
+@mixin hover {
+  // TODO: re-enable along with mq4-hover-shim
+  //  @if $enable-hover-media-query {
+  //    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+  //    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+  //    @media (hover: hover) {
+  //      &:hover { @content }
+  //    }
+  //  }
+  //  @else {
+  &:hover {
+    @content;
+  }
+  //  }
+}
+
+@mixin hover-focus {
+  @if $enable-hover-media-query {
+    &:focus {
+      @content;
+    }
+    @include hover {
+      @content;
+    }
+  }
+  @else {
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin plain-hover-focus {
+  @if $enable-hover-media-query {
+    &,
+    &:focus {
+      @content;
+    }
+    @include hover {
+      @content;
+    }
+  }
+  @else {
+    &,
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-focus-active {
+  @if $enable-hover-media-query {
+    &:focus,
+    &:active {
+      @content;
+    }
+    @include hover {
+      @content;
+    }
+  }
+  @else {
+    &:focus,
+    &:active,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+// Border
+@mixin border($border-width: 1px, $border-color: transparent) {
+  border: $border-width solid $border-color;
+}
+
+// Box shadow
+@mixin box-shadow {
+  box-shadow:
+    inset 0 1px 1px rgba($color-border, 0.075),
+    0 0 8px rgba($color-utility-neutral, 0.6);
+}

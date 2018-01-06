@@ -1,0 +1,298 @@
+<div class="tab aside-cb" id="code-block-tab">
+  <div class="tab__list-wrap">
+    <div class="tab__list" data-tab="tabs">
+      <a class="tab__link is-active" data-tab="tab" href="#javascript">JavaScript</a>
+      <a class="tab__link" data-tab="tab" href="#java">Java</a>
+      <a class="tab__link" data-tab="tab" href="#php">PHP</a>
+      <a class="tab__link" data-tab="tab" href="#net">.NET</a>
+      <a class="tab__link" data-tab="tab" href="#python">Python</a>
+    </div>
+  </div>
+  <div class="tab__content">
+    <div class="tab__pane is-active" id="javascript" data-tab="pane">
+
+      <div class="d-none d-lg-block p-lg">
+        <div class="mb-lg">
+          <div class="text-bold text-white mb-xs">Library</div>
+          <a href="/" class="text-break-word">https://github.com/paymentwall/paymentwall-java</a>
+        </div>
+
+        <div class="mb-lg">
+          <div class="text-bold text-white mb-xs">Request URL</div>
+          <a href="/" class="text-break-word">https://api.paymentwall.com/api/subscription</a>
+        </div>
+
+        <div class="mb-lg">
+          <div class="text-bold text-white mb-xs">Request Method</div>
+          <a href="/" class="text-break-word">https://api.paymentwall.com/api/subscription</a>
+        </div>
+
+        <div class="mb-lg">
+          <div class="text-bold text-white mb-xs">Initialize</div>
+          <pre>
+          <code class="java text-small">
+    import com.paymentwall.java.Base;
+
+    Base.setAppKey("YOUR_APPLICATION_KEY");
+    Base.setSecretKey("YOUR_SECRET_KEY");
+    Base.setApiType(Base.API_GOODS);
+          </code>
+        </pre>
+        </div>
+
+        <div class="mb-lg">
+          <div class="text-bold text-white mb-xs">Stored Widget Call</div>
+          <pre>
+          <code class="java text-small">
+    import com.paymentwall.java.Widget;
+    import com.paymentwall.java.WidgetBuilder;
+    import java.util.LinkedHashMap;
+
+    WidgetBuilder widgetBuilder = new WidgetBuilder
+    (userid, widgetcode);
+
+    widgetBuilder.setExtraParams(new LinkedHashMap
+    <String, String>(){
+        {
+            put("email", email);
+            put("timestamp", timestamp);
+        }
+    });
+
+    Widget widget = widgetBuilder.build();
+          </code>
+        </pre>
+        </div>
+
+        <div class="mb-lg">
+          <div class="text-bold text-white mb-xs">Result Example</div>
+          <pre>
+          <code class="java text-small">
+    widget.getHtmlCode();
+          </code>
+        </pre>
+        </div>
+
+      </div>
+
+      <div class="d-lg-none">
+        <div class="p-md bg-white">
+          <h1 class="text-thin mb-md">Digital Goods</h1>
+
+          <p class="mb-md">Digital Goods API is mainly focused on selling In-game virtual items, services and premium membership with PayAlto.
+          </p>
+
+          <h2 class="mb-md text-large">Stored widget call</h2>
+
+          <p class="mb-md">It shows a widget, where stored products in Products section of Merchant Account are available for payment. Both
+            subscription and one-time payment are supported in our products section.
+          </p>
+        </div>
+
+        <div class="bg-dard p-md">
+          <pre>
+            <code class="java text-small">
+  import com.paymentwall.java.Base;
+
+  Base.setAppKey("YOUR_
+  APPLICATION_KEY");
+  Base.setSecretKey("YOUR_
+  SECRET_KEY");
+  Base.setApiType(Base.API_GOODS);
+            </code>
+          </pre>
+        </div>
+
+        <h3 class="text-large text-normal mb-0 bg-white p-md">Parameter:</h3>
+
+        <div class="table-responsive">
+          <table class="table text-small">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Required</th>
+                <th>Format</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>key</td>
+                <td>yes</td>
+                <td>String(32)</td>
+                <td>
+                  <div>
+                    Sample:
+                    <span class="text-break-word">048c51f8fc834a1467db96b683f16e70</span>
+                    <br> Can be found in General Settings of the Project inside of your Merchant Account
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>uId</td>
+                <td>yes</td>
+                <td>String(64)</td>
+                <td>
+                  <div>
+                    Sample: test@paymentwall.com
+                    <br> Not case-sensitive. ID of the end-user in your system (usually it is an email) who is viewing the widget.
+                    The
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>widget</td>
+                <td>yes</td>
+                <td>String</td>
+                <td>
+                  <div>
+                    Sample: p1_1
+                    <br> Widget code. Can be obtained by Merchant Account -> Projects -> Widgets
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>email</td>
+                <td>yes</td>
+                <td>String</td>
+                <td>
+                  <div>
+                    Sample: test@paymentwall.com
+                    <br> Paymentwall will automatically send a payment receipt to the user.
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>timestamp</td>
+                <td>yes</td>
+                <td>String(10)</td>
+                <td>
+                  <div>
+                    Sample: 1477985778
+                    <br> Unix timestamp of the current date
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>sign_version</td>
+                <td>no</td>
+                <td>String</td>
+                <td>
+                  <div>
+                    Sample: 2, 3
+                    <br> Signature Version.
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>sign</td>
+                <td>no</td>
+                <td>String</td>
+                <td>
+                  <div>
+                    Sample:
+                    <span class="text-break-word">
+                      7633c3b060fa2ddd41283ffd4629ab40
+                    </span>
+                    <br> Refer to
+                    <a href="#">
+                      Signature Calculation.
+                    </a>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-dark p-md">
+          <pre>
+            <code class="java text-small">
+  import com.paymentwall.java.Widget;
+  import com.paymentwall.java.WidgetBuilder;
+  import java.util.LinkedHashMap;
+
+  WidgetBuilder widgetBuilder = new WidgetBuilder(userid, widgetcode);
+
+  widgetBuilder.setExtraParams(new LinkedHashMap  <String, String>(){
+    {
+      put("email", email);
+      put("timestamp", timestamp);
+    }
+  });
+
+  Widget widget = widgetBuilder.build();
+            </code>
+          </pre>
+        </div>
+
+        <div class="bg-white p-md">
+          <h3 class="text-large text-normal mb-md">Result:</h3>
+
+          <p class="mb-0">You will get a URL or iframe by widget object.</p>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table text-small">
+            <tbody>
+              <tr>
+                <td>
+                  plan
+                  <br>
+                  <span class="text-muted">string</span>
+                </td>
+                <td>
+                  Identifies the product ID, send back as
+                  <span class="tag">goodsid</span> parametr in
+                  <a href="#">pingbacks</a>. eg: productax123
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  period
+                  <br> required
+                  <br> string
+                </td>
+                <td>
+                  day/week/month/year
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  period_duration
+                  <br>
+                  <span class="text-warning">required</span>
+                  <br>
+                  <span class="text-muted">string</span>
+                </td>
+                <td>
+                  Number of peroids mentioned the period parameter. By default minimum duration for recurring in 3 days. This can be adjusted
+                  by contacting
+                  <a href="mailto:devsupport@paymentwall.com">devsupport@paymentwall.com</a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="tab__pane" data-tab="pane" id="java">Java</div>
+    <div class="tab__pane" data-tab="pane" id="php">PHP</div>
+    <div class="tab__pane" data-tab="pane" id="net">.NET</div>
+    <div class="tab__pane" data-tab="pane" id="python">Python</div>
+  </div>
+</div>

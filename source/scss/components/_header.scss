@@ -1,0 +1,25 @@
+// stylelint-disable plugin/no-unsupported-browser-features
+
+.app-header {
+  display: flex;
+  align-items: center;
+
+  &__toggle {
+    padding: $space-xs;
+    margin-left: auto;
+
+    color: $color-3;
+
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+  }
+
+  &__mobile-nav {
+    position: fixed 0;
+
+    padding: $space-lg $space-md;
+
+    background-color: $color-3;
+  }
+}

@@ -1,0 +1,27 @@
+.sidenav {
+  position: fixed 0;
+  padding: $space-md;
+  overflow-y: auto;
+
+  visibility: hidden;
+  background-color: $color-7;
+  opacity: 0;
+
+  transition: opacity $anim-speed-quick $anim-ease;
+
+  @media (--large-up) {
+    position: relative;
+
+    display: block;
+    padding: $space-lg;
+
+    visibility: visible;
+    border-right: 1px solid $color-18;
+    opacity: 1;
+  }
+
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+  }
+}

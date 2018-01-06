@@ -1,0 +1,9 @@
+// aside code block
+
+.aside-cb {
+  width: 100%;
+
+  @media (--large-up) {
+    max-width: 560px;
+  }
+}

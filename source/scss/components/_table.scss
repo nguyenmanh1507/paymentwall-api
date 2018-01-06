@@ -1,0 +1,37 @@
+// stylelint-disable selector-max-type
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  background-color: $color-white; // Reset for nesting within parents with `background-color`.
+
+  th,
+  td {
+    padding: $space-md;
+    vertical-align: top;
+    border-bottom: $table-border-width solid $color-border-light;
+  }
+
+  tr:last-child th,
+  tr:last-child td {
+    border-bottom-color: $color-border;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    // border-top: $table-border-width solid $color-border;
+    border-bottom: $table-border-width solid $color-border;
+  }
+
+  tbody + tbody {
+    border-bottom: $table-border-width solid $color-border;
+  }
+
+  .table {
+    background-color: $color-white;
+  }
+}
+
+.table-responsive {
+  overflow-x: auto;
+}

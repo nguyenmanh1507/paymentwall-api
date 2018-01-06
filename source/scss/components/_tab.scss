@@ -1,0 +1,56 @@
+// stylelint-disable plugin/no-unsupported-browser-features
+
+.tab {
+  overflow-x: hidden;
+  background-color: $color-1;
+
+  &__list {
+    display: flex;
+    overflow-x: auto;
+
+    background-color: $color-2;
+
+    @media (--large-up) {
+      &::-webkit-scrollbar {
+        height: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba($color-11, 0.3);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba($color-7, 0.3);
+      }
+    }
+  }
+
+  &__link {
+    padding: $space-md $space-lg;
+
+    color: $color-3;
+    text-align: center;
+
+    transition: box-shadow $anim-speed-quick $anim-ease;
+
+    &:hover {
+      text-decoration: none;
+
+      box-shadow: inset 0 -4px $color-5;
+    }
+
+    &.is-active {
+      box-shadow: inset 0 -4px $color-5;
+    }
+  }
+
+  &__pane {
+    display: none;
+
+    overflow-x: hidden;
+
+    &.is-active {
+      display: block;
+    }
+  }
+}

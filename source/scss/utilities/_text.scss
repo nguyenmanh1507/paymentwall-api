@@ -1,0 +1,53 @@
+// stylelint-disable primer/selector-no-utility
+
+.text-bold {
+  font-weight: $font-weight-bold;
+}
+
+.text-normal {
+  font-weight: $font-weight-base;
+}
+
+.text-thin {
+  font-weight: $font-weight-thin;
+}
+
+.text-large {
+  font-size: $font-size-h4;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-body {
+  color: $color-8;
+}
+
+.text-primary {
+  color: $color-brand;
+}
+
+.text-danger {
+  color: $color-danger;
+}
+
+.text-white {
+  color: $color-3;
+}
+
+.text-warning {
+  color: $color-17;
+}
+
+.text-muted {
+  color: $color-text-subtle;
+}
+
+.text-break-word {
+  word-wrap: break-word;
+}
