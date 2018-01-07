@@ -474,7 +474,7 @@ template {
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
@@ -504,21 +504,9 @@ template {
 }
 
 .btn--secondary {
-  color: #fff;
-  background-color: #808080;
-}
-
-.btn--secondary:focus, .btn--secondary:hover {
-  background-color: #737373;
-}
-
-.btn--danger {
-  color: #fff;
-  background-color: #b12a0b;
-}
-
-.btn--danger:focus, .btn--danger:hover {
-  background-color: #99240a;
+  color: #949494;
+  background-color: transparent;
+  border: 0.0625rem solid #949494;
 }
 
 .btn--link {
@@ -556,7 +544,7 @@ template {
 
 .nav__title {
   margin-bottom: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: #949494;
   text-transform: uppercase;
@@ -2633,7 +2621,7 @@ template {
 }
 
 .text-small {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
 }
 
 .text-center {

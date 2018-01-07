@@ -18,21 +18,20 @@
     text-decoration: none;
   }
 
-  $buttons-variant: (
-    primary: $color-8,
-    secondary: $color-secondary,
-    danger: $color-danger
-  );
+  &--primary {
+    color: $color-3;
+    background-color: $color-8;
 
-  @each $button, $bg in $buttons-variant {
-    &--#{$button} {
-      color: $color-white;
-      background-color: $bg;
-
-      @include hover-focus {
-        background-color: darken($bg, 5%);
-      }
+    @include hover-focus {
+      background-color: darken($color-8, 5%);
     }
+  }
+
+  &--secondary {
+    color: $color-6;
+    background-color: transparent;
+
+    @include border(1px, $color-6);
   }
 
   &--link {

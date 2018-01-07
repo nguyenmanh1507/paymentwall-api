@@ -13,7 +13,7 @@ class Tab {
     this.tabPane = this.el.querySelectorAll('[data-tab="pane"]')
   }
 
-  init() {
+  _trackTabPaneActive() {
     this.el.addEventListener('click', e => {
       if (e.target && e.target.nodeName == 'A') {
         this.tabPane.forEach(pane => {
@@ -26,7 +26,21 @@ class Tab {
         })
       }
     })
+  }
 
+  _setTabActive() {
+    this.tabLink.forEach((link, index) => {
+      link.setAttribute('data-tab-index', index)
+      link.addEventListener('click', e => {
+        e.preventDefault()
+        this.index = link.getAttribute('data-tab-index')
+        this.currentTab = link.getAttribute('href').slice(1)
+        link.classList.add('is-active')
+      })
+    })
+  }
+
+  _setTabDeactive() {
     this.tabList.addEventListener('click', e => {
       if (e.target && e.target.nodeName == 'A') {
         this.tabLink.forEach((link, index) => {
@@ -38,15 +52,11 @@ class Tab {
         })
       }
     })
+  }
 
-    this.tabLink.forEach((link, index) => {
-      link.setAttribute('data-tab-index', index)
-      link.addEventListener('click', e => {
-        e.preventDefault()
-        this.index = link.getAttribute('data-tab-index')
-        this.currentTab = link.getAttribute('href').slice(1)
-        link.classList.add('is-active')
-      })
-    })
+  init() {
+    this._trackTabPaneActive()
+    this._setTabDeactive()
+    this._setTabActive()
   }
 }
