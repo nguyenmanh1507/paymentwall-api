@@ -1,0 +1,166 @@
+<div class="item-fullfill p-md p-lg-lg d-none d-lg-block">
+  <h1 class="text-thin mb-md">Digital Goods</h1>
+
+  <p class="mb-md">Digital Goods API is mainly focused on selling In-game virtual items, services and premium membership with PayAlto.
+  </p>
+
+  <h2 class="mb-md text-large">Stored widget call</h2>
+
+  <p class="mb-md">It shows a widget, where stored products in Products section of Merchant Account are available for payment. Both subscription and one-time payment are supported in our products section.
+  </p>
+
+  <h3 class="text-large text-normal mb-md">Parameter:</h3>
+
+  <table class="table text-small mb-lg">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Required</th>
+        <th>Format</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>key</td>
+        <td>yes</td>
+        <td>String(32)</td>
+        <td>
+          <div>
+            Sample:
+            <span class="text-break-word">048c51f8fc834a1467db96b683f16e70</span>
+            <br> Can be found in General Settings of the Project inside of your Merchant Account
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>uId</td>
+        <td>yes</td>
+        <td>String(64)</td>
+        <td>
+          <div>
+            Sample: test@paymentwall.com
+            <br> Not case-sensitive. ID of the end-user in your system (usually it is an email) who is viewing the widget. The
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>widget</td>
+        <td>yes</td>
+        <td>String</td>
+        <td>
+          <div>
+            Sample: p1_1
+            <br> Widget code. Can be obtained by Merchant Account -> Projects -> Widgets
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>email</td>
+        <td>yes</td>
+        <td>String</td>
+        <td>
+          <div>
+            Sample: test@paymentwall.com
+            <br> Paymentwall will automatically send a payment receipt to the user.
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>timestamp</td>
+        <td>yes</td>
+        <td>String(10)</td>
+        <td>
+          <div>
+            Sample: 1477985778
+            <br> Unix timestamp of the current date
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>sign_version</td>
+        <td>no</td>
+        <td>String</td>
+        <td>
+          <div>
+            Sample: 2, 3
+            <br> Signature Version.
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>sign</td>
+        <td>no</td>
+        <td>String</td>
+        <td>
+          <div>
+            Sample:
+            <span class="text-break-word">
+              7633c3b060fa2ddd41283ffd4629ab40
+            </span>
+            <br> Refer to
+            <a href="#">
+              Signature Calculation.
+            </a>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <h3 class="text-large text-normal mb-md">Result:</h3>
+
+  <p class="mb-md">You will get a URL or iframe by widget object.</p>
+
+  <table class="table text-small mb-lg">
+    <tbody>
+      <tr>
+        <td>
+          plan
+          <br>
+          <span class="text-muted">string</span>
+        </td>
+        <td>
+          Identifies the product ID, send back as
+          <span class="tag">goodsid</span> parametr in
+          <a href="#">pingbacks</a>. eg: productax123
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          period
+          <br> required
+          <br> string
+        </td>
+        <td>
+          day/week/month/year
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          period_duration
+          <br>
+          <span class="text-warning">required</span>
+          <br>
+          <span class="text-muted">string</span>
+        </td>
+        <td>
+          Number of peroids mentioned the period parameter. By default minimum duration for recurring in 3 days. This can be adjusted by contacting
+          <a href="mailto:devsupport@paymentwall.com">devsupport@paymentwall.com</a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
