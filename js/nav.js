@@ -1,4 +1,4 @@
-exoport defaut class Nav {
+class Nav {
   constructor(nav = '', trigger = '') {
     if (!nav.length || !trigger.length) {
       throw Error('Error happen')

@@ -1,4 +1,4 @@
-export default class Tab {
+class Tab {
   constructor(el = '') {
     if (el.length === 0) {
       throw Error('You missing target element')
