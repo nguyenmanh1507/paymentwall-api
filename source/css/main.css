@@ -238,7 +238,7 @@ sup {
 }
 
 a {
-  color: #009ffd;
+  color: #3a72c7;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -339,6 +339,7 @@ label {
 }
 
 button {
+  cursor: pointer;
   border-radius: 0;
 }
 
@@ -573,6 +574,10 @@ template {
 
 .nav__link, .nav__sub-link {
   color: #474747;
+}
+
+.nav__link.is-active, .nav__sub-link.is-active {
+  color: #3a72c7;
 }
 
 .sidenav {

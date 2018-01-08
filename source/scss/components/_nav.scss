@@ -36,5 +36,9 @@
   &__link,
   &__sub-link {
     color: $color-8;
+
+    &.is-active {
+      color: $color-4;
+    }
   }
 }

@@ -5,6 +5,7 @@
   "dependencies": {
     "browser-sync": "^2.0.0",
     "chalk": "^2.3.0",
+    "gh-pages": "^1.1.0",
     "gulp": "gulpjs/gulp#4.0",
     "minimist": "^1.2.0",
     "patternlab-node": "2.9.3",
@@ -27,7 +28,8 @@
   "scripts": {
     "start": "gulp patternlab:serve",
     "postinstall": "node scripts/postinstall.js",
-    "gulp": "gulp -- "
+    "gulp": "gulp -- ",
+    "deploy": "gh-pages -d public"
   },
   "license": "MIT",
   "engines": {
