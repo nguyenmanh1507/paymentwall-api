@@ -2,9 +2,10 @@
  * PATTERN LAB NODE
  * EDITION-NODE-GULP
  * The gulp wrapper around patternlab-node core, providing tasks to interact with the core library and move supporting frontend assets.
-******************************************************/
+ ******************************************************/
 var gulp = require('gulp'),
   path = require('path'),
+  pump = require('pump'),
   browserSync = require('browser-sync').create(),
   argv = require('minimist')(process.argv.slice(2)),
   chalk = require('chalk'),
@@ -71,6 +72,17 @@ gulp.task('styles:compress', () => {
     .pipe(gulp.dest('source/css'))
 })
 
+gulp.task('scripts:compile', () => {
+  return gulp
+    .src('source/js/*.js')
+    .pipe($.babel())
+    .pipe(gulp.dest('public/js'))
+})
+
+gulp.task('scripts:compress', function (cb) {
+  pump([gulp.src('public/js/*.js'), $.uglify(), gulp.dest('public/js')], cb)
+})
+
 /**
  * Normalize all paths to be plain, paths with no leading './',
  * relative to the process root, and with backslashes converted to
@@ -81,7 +93,7 @@ gulp.task('styles:compress', () => {
  * This is intended to avoid all known limitations of gulp.watch().
  *
  * @param {...string} pathFragment - A directory, filename, or glob.
-*/
+ */
 function normalizePath() {
   return path
     .relative(process.cwd(), path.resolve.apply(this, arguments))
@@ -90,7 +102,7 @@ function normalizePath() {
 
 /******************************************************
  * COPY TASKS - stream assets from source to destination
-******************************************************/
+ ******************************************************/
 // JS copy
 gulp.task('pl-copy:js', function () {
   return gulp
@@ -154,7 +166,7 @@ gulp.task('pl-copy:styleguide-css', function () {
 
 /******************************************************
  * PATTERN LAB CONFIGURATION - API with core library
-******************************************************/
+ ******************************************************/
 //read all paths from our namespaced config file
 var config = require('./patternlab-config.json'),
   patternlab = require('patternlab-node')(config)
@@ -222,7 +234,10 @@ gulp.task('patternlab:loadstarterkit', function (done) {
   done()
 })
 
-gulp.task('patternlab:build', gulp.series('pl-assets', build))
+gulp.task(
+  'patternlab:build',
+  gulp.series('pl-assets', 'scripts:compile', 'scripts:compress', build)
+)
 
 gulp.task('patternlab:installplugin', function (done) {
   patternlab.installplugin(argv.plugin)
@@ -231,7 +246,7 @@ gulp.task('patternlab:installplugin', function (done) {
 
 /******************************************************
  * SERVER AND WATCH TASKS
-******************************************************/
+ ******************************************************/
 // watch task utility functions
 function getSupportedTemplateExtensions() {
   var engines = require('./node_modules/patternlab-node/core/lib/pattern_engines')
@@ -279,7 +294,12 @@ function watch() {
       name: 'JAVASCRIPT',
       paths: [normalizePath(paths().source.js, '**', '*.js')],
       config: { awaitWriteFinish: true },
-      tasks: gulp.series('pl-copy:js', reload)
+      tasks: gulp.series(
+        'pl-copy:js',
+        'scripts:compile',
+        'scripts:compress',
+        reload
+      )
     },
     {
       name: 'Styleguide Files',
@@ -356,10 +376,16 @@ gulp.task(
 
 /******************************************************
  * COMPOUND TASKS
-******************************************************/
+ ******************************************************/
 gulp.task('default', gulp.series('patternlab:build'))
 gulp.task('patternlab:watch', gulp.series('patternlab:build', watch))
 gulp.task(
   'patternlab:serve',
-  gulp.series('styles', 'patternlab:build', 'patternlab:connect', watch)
+  gulp.series(
+    'styles',
+    'styles:compress',
+    'patternlab:build',
+    'patternlab:connect',
+    watch
+  )
 )
